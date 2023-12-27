@@ -96,8 +96,6 @@ M.general = {
       "Toggle horizontal term",
     },
 
-    -- [";"] = { ":", "enter command mode", opts = { nowait = true } },
-
     ["<leader>s"] = { "<cmd>w! <CR>", "Save" },
 
     ["<C-/>"] = {
@@ -235,7 +233,6 @@ end
 function ToggleVerticalTerminal()
   require("nvterm.terminal").toggle "vertical"
   local current_mode = vim.fn.mode()
-  -- local saved_cursor = vim.fn.getcurpos()
 
   if current_mode == "i" or current_mode == "R" then
     -- Currently in insert or replace mode, switch to normal mode
@@ -247,9 +244,6 @@ function ToggleVerticalTerminal()
       vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-x>", true, false, true), "i", true)
     end)
   end
-  -- if current_mode ~= "i" and current_mode ~= "R" then
-  --   vim.fn.cursor(saved_cursor[1], saved_cursor[2])
-  -- end
 end
 
 function OpenNewTerminalInNewWindow()

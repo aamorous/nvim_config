@@ -3,12 +3,9 @@ local overrides = require "custom.configs.overrides"
 ---@type NvPluginSpec[]
 local plugins = {
 
-  -- Override plugin definition options
-
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      -- format & linting
       {
         "jose-elias-alvarez/null-ls.nvim",
         config = function()
@@ -19,13 +16,8 @@ local plugins = {
     config = function()
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"
-    end, -- Override to setup mason-lspconfig
+    end,
   },
-
-  -- {
-  --     "OmniSharp/omnisharp-vim",
-  --     enabled = true
-  -- },
 
   {
     "dense-analysis/ale",
@@ -45,7 +37,6 @@ local plugins = {
     end,
   },
 
-  -- override plugin configs
   {
     "williamboman/mason.nvim",
     opts = {
@@ -90,87 +81,8 @@ local plugins = {
 
   {
     "nvim-tree/nvim-tree.lua",
-    -- opts = overrides.nvimtree,
-    -- config = function()
-    --   require("nvim-tree").setup {
-    --     disable_netrw = true,
-    --     hijack_netrw = true,
-    --     hijack_cursor = true,
-    --     hijack_unnamed_buffer_when_opening = false,
-    --     sync_root_with_cwd = true,
-    --     update_focused_file = {
-    --       enable = true,
-    --       update_root = false,
-    --     },
-    --     view = {
-    --       adaptive_size = false,
-    --       side = "right",
-    --       width = 20,
-    --       preserve_window_proportions = true,
-    --     },
-    --     git = {
-    --       enable = false,
-    --       ignore = true,
-    --     },
-    --     filesystem_watchers = {
-    --       enable = true,
-    --     },
-    --     actions = {
-    --       open_file = {
-    --         resize_window = true,
-    --       },
-    --     },
-    --     renderer = {
-    --       root_folder_label = true,
-    --       highlight_git = false,
-    --       highlight_opened_files = "none",
-    --       indent_width = 1,
-    --
-    --       indent_markers = {
-    --         enable = true,
-    --       },
-    --
-    --       icons = {
-    --         show = {
-    --           file = false,
-    --           folder = true,
-    --           folder_arrow = true,
-    --           git = false,
-    --         },
-    --
-    --         glyphs = {
-    --           default = "󰈚",
-    --           symlink = "",
-    --           folder = {
-    --             default = "",
-    --             empty = "",
-    --             empty_open = "",
-    --             open = "",
-    --             symlink = "",
-    --             symlink_open = "",
-    --             arrow_open = "",
-    --             arrow_closed = "",
-    --           },
-    --           git = {
-    --             unstaged = "✗",
-    --             staged = "✓",
-    --             unmerged = "",
-    --             renamed = "➜",
-    --             untracked = "★",
-    --             deleted = "",
-    --             ignored = "◌",
-    --           },
-    --         },
-    --       },
-    --     },
-    --     filters = {
-    --       dotfiles = true,
-    --     },
-    --   }
-    -- end,
   },
 
-  -- Install a plugin
   {
     "max397574/better-escape.nvim",
     enabled = true,
@@ -237,7 +149,7 @@ local plugins = {
             jestCommand = "npm test --",
             jestConfigFile = "custom.jest.config.ts",
             env = { CI = true },
-            cwd = function(path)
+            cwd = function()
               return vim.fn.getcwd()
             end,
           },
@@ -404,13 +316,13 @@ local plugins = {
 
   {
     "folke/todo-comments.nvim",
-    -- enabled = false,
+    enabled = true,
     dependencies = { "nvim-lua/plenary.nvim" },
     lazy = false,
     config = function()
       require("todo-comments").setup()
     end,
-  }, -- To make a plugin not be loaded
+  },
 
   {
     "Exafunction/codeium.vim",

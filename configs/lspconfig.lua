@@ -4,7 +4,6 @@ local util = require "lspconfig/util"
 local lspconfig = require "lspconfig"
 local pid = vim.fn.getpid()
 
--- if you just want default config for the servers then put them in a table
 local servers = { "html", "cssls", "tsserver", "clangd" }
 
 for _, lsp in ipairs(servers) do

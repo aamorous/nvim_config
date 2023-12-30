@@ -32,7 +32,7 @@ M.general = {
 
     ["<A-r>"] = {
       string.format "<Cmd>:w! | lua require('nvterm.terminal').send('cd '..vim.fn.expand('%%:p:h')..'; ' .. GetRunCommand() .. '\\r', 'vertical')<CR>",
-      "Set files location as a dir",
+      "Run current file",
     },
 
     ["<leader>P"] = {

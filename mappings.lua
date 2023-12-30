@@ -2,6 +2,8 @@
 function GetRunCommand()
   local file_name = vim.fn.expand "%:t"
   local file_extension = vim.fn.expand "%:e"
+  local file_name_without_extension = file_name:gsub("%..*$", "")
+  local file_name_with_exe = file_name_without_extension .. ".exe"
 
   if file_extension ~= "" then
     ToggleVerticalTerminal()
@@ -18,7 +20,7 @@ function GetRunCommand()
   elseif file_extension == "ts" then
     return "npx ts-node " .. file_name
   elseif file_extension == "cpp" then
-    return "gcc " .. file_name
+    return ("g++ " .. file_name .. " | ./main.exe")
   else
     print "Unsupported file type"
   end

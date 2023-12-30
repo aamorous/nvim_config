@@ -4,7 +4,7 @@ local util = require "lspconfig/util"
 local lspconfig = require "lspconfig"
 local pid = vim.fn.getpid()
 
-local servers = { "html", "cssls", "tsserver", "clangd" }
+local servers = { "html", "cssls", "tsserver", "clangd"}
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -45,7 +45,7 @@ lspconfig.omnisharp.setup {
   vim.api.nvim_set_keymap("n", "gd", ":OmniSharpGotoDefinition<CR>", { noremap = true, silent = true }),
   vim.api.nvim_set_keymap("n", "gD", ":OmniSharpPreviewDefinioton<CR>", { noremap = true, silent = true }),
   -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, {}),
-  vim.keymap.set("n", "K", vim.lsp.buf.hover, {}),
+  vim.keymap.set("n", "gh", vim.lsp.buf.hover, {}),
   vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {}),
   vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, {}),
   vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, {}),

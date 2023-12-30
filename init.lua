@@ -1,4 +1,4 @@
-        vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 vim.opt.smartindent = true
 vim.opt.swapfile = false
 vim.g.toggle_theme_icon = ""

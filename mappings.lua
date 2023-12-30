@@ -2,8 +2,6 @@
 function GetRunCommand()
   local file_name = vim.fn.expand "%:t"
   local file_extension = vim.fn.expand "%:e"
-  local file_name_without_extension = file_name:gsub("%..*$", "")
-  local file_name_with_exe = file_name_without_extension .. ".exe"
 
   if file_extension ~= "" then
     ToggleVerticalTerminal()

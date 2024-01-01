@@ -16,15 +16,11 @@ vim.opt.numberwidth = 4
 vim.opt.scrolloff = 8
 -- vim.o.autochdir = true
 
-
-
 vim.cmd [[
 
 
 
 ]]
-
-
 
 -- for powershell
 vim.cmd [[

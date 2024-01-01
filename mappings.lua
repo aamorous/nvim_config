@@ -154,6 +154,16 @@ M.general = {
       end,
       "Insert newline and return to normal mode",
     },
+    ["J"] = {
+      function()
+        vim.api.nvim_command ":normal! 5j"
+      end,
+    },
+    ["K"] = {
+      function()
+        vim.api.nvim_command ":normal! 5k"
+      end,
+    },
 
     ["<C-p>"] = {
       function()

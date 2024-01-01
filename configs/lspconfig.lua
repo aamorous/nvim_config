@@ -41,7 +41,7 @@ lspconfig.omnisharp.setup {
   on_atach = on_attach,
   capabilities = capabilities,
   cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
-  vim.keymap.set("n", "K", vim.lsp.buf.hover, {}),
+  vim.keymap.set("n", "<space>h", vim.lsp.buf.hover, {}),
   vim.api.nvim_set_keymap("n", "gd", ":OmniSharpGotoDefinition<CR>", { noremap = true, silent = true }),
   vim.api.nvim_set_keymap("n", "gD", ":OmniSharpPreviewDefinioton<CR>", { noremap = true, silent = true }),
   -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, {}),

@@ -15,7 +15,7 @@ M.ui = {
   telescope = { style = "borderless" }, -- borderless / bordered
 
   cmp = {
-    icons = false,
+    icons = true,
     lspkind_text = true,
     style = "default", -- default/flat_light/flat_dark/atom/atom_colored
     border_color = "grey_fg", -- only applicable for "default" style, use color names from base30 variables
@@ -27,12 +27,26 @@ M.ui = {
     -- default/round/block/arrow separators work only for default statusline theme
     -- round and block will work for minimal theme only
     separator_style = "block",
-    overriden_modules = nil,
+    overriden_modules = function(modules)
+      modules[10] = (function()
+        return ""
+      end)()
+
+      modules[11] = (function()
+        return ""
+      end)()
+
+      -- table.insert(modules, modules[2])
+
+      modules[2] = (function()
+        return "%##"
+      end)()
+    end,
   },
 
   tabufline = {
     show_numbers = false,
-    enabled = false,
+    enabled = true,
     lazyload = true,
     overriden_modules = nil,
   },

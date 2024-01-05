@@ -14,6 +14,7 @@ vim.opt.hlsearch = false
 vim.opt.incsearch = true
 vim.opt.numberwidth = 4
 vim.opt.scrolloff = 8
+vim.opt.fillchars = { eob = "~" }
 -- vim.o.autochdir = true
 
 vim.cmd [[

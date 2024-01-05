@@ -66,7 +66,7 @@ local plugins = {
     config = function()
       require("indent_blankline").setup {
         -- for example, context is off by default, use this to turn it on
-        show_current_context = true,
+        show_current_context = false,
         show_current_context_start = false,
         vim.cmd [["
         
@@ -108,7 +108,7 @@ local plugins = {
               height = 0.4,
               border = "single",
             },
-            horizontal = { location = "rightbelow", split_ratio = 0.4 },
+            horizontal = { location = "rightbelow", split_ratio = 0.3 },
             vertical = { location = "rightbelow", split_ratio = 0.5 },
           },
         },

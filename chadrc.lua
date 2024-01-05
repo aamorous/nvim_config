@@ -24,21 +24,27 @@ M.ui = {
 
   statusline = {
     theme = "vscode_colored", -- default/vscode/vscode_colored/minimal
-    -- default/round/block/arrow separators work only for default statusline theme
-    -- round and block will work for minimal theme only
     separator_style = "block",
     overriden_modules = function(modules)
       modules[10] = (function()
-        return ""
+        local currentTimeInSeconds = os.time()
+        local dateTable = os.date("*t", currentTimeInSeconds)
+        local ct = string.format("%02d:%02d", dateTable.hour, dateTable.min)
+        while true do
+          os.execute "sleep 1"
+          return ct
+        end
       end)()
 
       modules[11] = (function()
         return ""
       end)()
 
-      -- table.insert(modules, modules[2])
+      modules[12] = (function()
+        return ""
+      end)()
 
-      modules[2] = (function()
+      modules[3] = (function()
         return "%##"
       end)()
     end,

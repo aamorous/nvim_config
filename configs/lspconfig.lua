@@ -4,7 +4,7 @@ local util = require "lspconfig/util"
 local lspconfig = require "lspconfig"
 local pid = vim.fn.getpid()
 
-local servers = { "html", "cssls", "tsserver", "clangd"}
+local servers = { "html", "cssls", "tsserver", "clangd", "rust_analyzer" }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -48,28 +48,47 @@ lspconfig.omnisharp.setup {
   vim.keymap.set("n", "gh", vim.lsp.buf.hover, {}),
   vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {}),
   vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, {}),
-  vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, {}),
+  vim.keymap.set("n", "<space>c", vim.lsp.buf.code_action, {}),
 }
 
-lspconfig.rust_analyzer.setup {
-  on_atach = on_attach,
+lspconfig.gopls.setup {
+  on_attach = on_attach,
   capabilities = capabilities,
-
-  vim.keymap.set("n", "<space>f", function()
-    local ext = vim.fn.expand "%:e"
-    if ext == "rs" then
-      vim.fn.execute "RustFmt"
-    else
-    end
-  end),
-
-  filetypes = { "rust" },
-  root_dir = util.root_pattern "Cargo.toml",
+  cmd = { "gopls" },
+  filetypes = { "go", "gomod", "gowork", "gotmpl" },
+  root_dir = util.root_pattern("go.work", "go.mod", ".git"),
   settings = {
-    ["rust_analyzer"] = {
-      cargo = {
-        allFeatures = true,
+    gopls = {
+      completeUnimported = true,
+      usePlaceholders = true,
+      analyses = {
+        unusedparams = true,
       },
     },
   },
 }
+
+-- lspconfig.rust_analyzer.setup {
+--   on_atach = on_attach,
+--   capabilities = capabilities,
+--
+--   vim.keymap.set("n", "<space>f", function()
+--     local ext = vim.fn.expand "%:e"
+--     if ext == "rs" then
+--       vim.fn.execute "RustFmt"
+--     else
+--     end
+--   end),
+--
+--   vim.keymap.set("n", "gd", vim.lsp.buf.definition, {}),
+--
+--   filetypes = { "rust" },
+--   root_dir = util.root_pattern "Cargo.toml",
+--   settings = {
+--     ["rust_analyzer"] = {
+--       cargo = {
+--         allFeatures = true,
+--       },
+    -- },
+  -- },
+-- }

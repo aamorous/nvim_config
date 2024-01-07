@@ -30,9 +30,10 @@ local plugins = {
     enabled = true,
     config = function()
       require("rose-pine").setup {
-        disable_background = true,
+        -- disable_background = true,
         vim.api.nvim_set_hl(0, "Normal", { bg = "none" }),
-        vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" }),
+        vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#3B4252", fg = "#3B4252" }),
+        vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#3B4252" }),
       }
     end,
   },
@@ -42,6 +43,7 @@ local plugins = {
     opts = {
       ensure_installed = {
         "rust-analyzer",
+        "gopls",
       },
     },
   },
@@ -62,7 +64,7 @@ local plugins = {
 
   {
     "indent-blankline.nvim",
-    enabled = true,
+    enabled = false,
     config = function()
       require("indent_blankline").setup {
         -- for example, context is off by default, use this to turn it on

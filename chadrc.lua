@@ -26,25 +26,37 @@ M.ui = {
     theme = "vscode_colored", -- default/vscode/vscode_colored/minimal
     separator_style = "block",
     overriden_modules = function(modules)
-      modules[10] = (function()
-        local currentTimeInSeconds = os.time()
-        local dateTable = os.date("*t", currentTimeInSeconds)
-        local ct = string.format("%02d:%02d", dateTable.hour, dateTable.min)
-        while true do
-          os.execute "sleep 1"
-          return ct
-        end
+      modules[13] = (function()
+        return ""
+      end)()
+
+      modules[12] = (function()
+        return " "
       end)()
 
       modules[11] = (function()
         return ""
       end)()
 
-      modules[12] = (function()
+      modules[10] = (function()
         return ""
       end)()
 
+      -- table.insert(
+      --   modules,
+      --   1,
+      --   (function()
+      --     return " "
+      --   end)()
+      -- )
+
+      -- table.insert(modules, modules[2])
+
       modules[3] = (function()
+        return "%##"
+      end)()
+
+      modules[4] = (function()
         return "%##"
       end)()
     end,

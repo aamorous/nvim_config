@@ -1,2 +1,3 @@
-![image](https://github.com/aamorous/nvim_config/assets/137004870/952b7e81-20ca-4352-bd31-871a51339c08)
+![image](https://github.com/aamorous/nvim_config/assets/137004870/85871dce-e68f-4081-ac35-60cce0b83bad)
+
 

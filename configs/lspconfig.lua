@@ -89,6 +89,6 @@ lspconfig.gopls.setup {
 --       cargo = {
 --         allFeatures = true,
 --       },
-    -- },
-  -- },
+-- },
+-- },
 -- }

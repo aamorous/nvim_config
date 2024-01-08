@@ -32,7 +32,7 @@ M.general = {
   n = {
 
     ["<A-r>"] = {
-      string.format "<Cmd>:w! | lua require('nvterm.terminal').send('cd '..vim.fn.expand('%%:p:h')..'; ' .. GetRunCommand() .. '\\r', 'vertical')<CR>",
+      string.format "<Cmd>:w! | lua require('nvterm.terminal').send('cd '..vim.fn.expand('%%:p:h')..'; ' .. GetRunCommand() .. '\\r', 'horizontal')<CR>",
       "Run current file",
     },
 
@@ -76,9 +76,20 @@ M.general = {
       end,
     },
 
+    ["'"] = {
+      function()
+        local total_lines = vim.fn.line "$"
+        local current_line = vim.fn.line "."
+        local file = vim.fn.expand "%:p:~"
+        local to_ptint = string.format("Line: %d/%d %s", current_line, total_lines, file)
+        print(to_ptint)
+      end,
+      "Info about the file",
+    },
+
     ["<A-i>"] = {
       function()
-        require("nvterm.terminal").toggle "vertical"
+        require("nvterm.terminal").toggle "horizontal"
       end,
       "Toggle vertical term",
     },
@@ -92,7 +103,7 @@ M.general = {
 
     ["<A-h>"] = {
       function()
-        require("nvterm.terminal").toggle "horizontal"
+        require("nvterm.terminal").toggle "vertical"
       end,
       "Toggle horizontal term",
     },
@@ -190,7 +201,7 @@ M.general = {
 
     ["<A-i>"] = {
       function()
-        require("nvterm.terminal").toggle "vertical"
+        require("nvterm.terminal").toggle "horizontal"
       end,
       "Toggle vertical term",
     },
@@ -204,7 +215,7 @@ M.general = {
 
     ["<A-h>"] = {
       function()
-        require("nvterm.terminal").toggle "horizontal"
+        require("nvterm.terminal").toggle "vertical"
       end,
       "Toggle horizontal term",
     },
@@ -242,7 +253,7 @@ function OpenFileInVSC()
 end
 
 function ToggleVerticalTerminal()
-  require("nvterm.terminal").toggle "vertical"
+  require("nvterm.terminal").toggle "horizontal"
   local current_mode = vim.fn.mode()
 
   if current_mode == "i" or current_mode == "R" then
@@ -260,6 +271,10 @@ end
 function OpenNewTerminalInNewWindow()
   vim.fn.execute ":!wt"
   print "Opened New Terminal"
+end
+
+function SetStatusContent()
+  return "Custom Status"
 end
 
 return M

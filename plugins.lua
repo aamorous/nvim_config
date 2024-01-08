@@ -30,10 +30,7 @@ local plugins = {
     enabled = true,
     config = function()
       require("rose-pine").setup {
-        -- disable_background = true,
-        vim.api.nvim_set_hl(0, "Normal", { bg = "none" }),
-        vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#3B4252", fg = "#3B4252" }),
-        vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#3B4252" }),
+        disable_background = true,
       }
     end,
   },
@@ -64,17 +61,17 @@ local plugins = {
 
   {
     "indent-blankline.nvim",
-    enabled = false,
+    enabled = true,
+    lazy = false,
     config = function()
       require("indent_blankline").setup {
-        -- for example, context is off by default, use this to turn it on
-        show_current_context = false,
+        -- show_current_context = true,
         show_current_context_start = true,
         vim.cmd [["
         
         let g:indent_blankline_char = ''
         highlight IndentBlanklineContextChar guifg=#3f3d4a gui=nocombine
-        highlight IndentBlanklineContextStart guisp=None gui=nocombine 
+        highlight IndentBlanklineContextStart guibg=#3f3d4a gui=nocombine 
         
         "]],
       }
@@ -96,6 +93,10 @@ local plugins = {
 
   {
     "NvChad/nvterm",
+    init = function()
+      require("nvterm.terminal").toggle "horizontal"
+      require("nvterm.terminal").toggle "horizontal"
+    end,
     config = function()
       require("nvterm").setup {
         terminals = {
@@ -110,7 +111,7 @@ local plugins = {
               height = 0.4,
               border = "single",
             },
-            horizontal = { location = "rightbelow", split_ratio = 0.3 },
+            horizontal = { location = "rightbelow", split_ratio = 0.4 },
             vertical = { location = "rightbelow", split_ratio = 0.5 },
           },
         },

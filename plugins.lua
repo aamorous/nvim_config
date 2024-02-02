@@ -61,7 +61,7 @@ local plugins = {
 
   {
     "indent-blankline.nvim",
-    enabled = true,
+    enabled = false,
     lazy = false,
     config = function()
       require("indent_blankline").setup {

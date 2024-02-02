@@ -45,7 +45,7 @@ M.ui = {
         local sep_style = config.separator_style
         local separators = (type(sep_style) == "table" and sep_style) or default_sep_icons[sep_style]
         local sep_l = separators["left"]
-        local left_sep = "%#St_pos_sep#" .. sep_l .. "%#St_pos_icon#" .. " "
+        local left_sep = "%#St_pos_sep#" .. sep_l .. "%#St_pos_icon#" .. "| "
 
         local current_line = vim.fn.line(".", vim.g.statusline_winid)
         local total_line = vim.fn.line("$", vim.g.statusline_winid)
@@ -62,7 +62,7 @@ M.ui = {
         local function stbufnr()
           return vim.api.nvim_win_get_buf(vim.g.statusline_winid)
         end
-        local icon = "󰈚 "
+        local icon = "◾"
         local path = vim.api.nvim_buf_get_name(stbufnr())
         local name = (path == "" and "Empty ") or path:match "([^/\\]+)[/\\]*$"
         if string.find(name, "powershell") or string.find(name, "NvimTree") or string.find(name, "Empty") then
